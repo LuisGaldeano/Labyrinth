@@ -12,7 +12,5 @@ board = Board()
 game = Game()
 walls_position, clean_position = board.walls(base_labyrinth=labyrinth)
 
-attemp = game.attempt(labyrinth=labyrinth, walls_position=walls_position)
-print(attemp)
+play = game.play(labyrinth=labyrinth, walls_position=walls_position)
 
-# Quita el attemp de game
