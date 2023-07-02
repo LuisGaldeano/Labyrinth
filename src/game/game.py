@@ -379,25 +379,6 @@ class Game:
                         horizontal, start, ap, next_movement, nom, walls_position, labyrinth)
                     print(movements_allowed, nom)
 
-        # for num, mov in enumerate(movements_allowed):
-        #     ap, nom = movements.move_borrar(mov=mov,
-        #                                     horizontal=horizontal,
-        #                                     walls_position=walls_position,
-        #                                     labyrinth=labyrinth,
-        #                                     ap=ap,
-        #                                     nom=nom)
-        #     roads.append([ap, nom])
-        #     print(ap)
-        #
-        #     if end_position in ap:
-        #         return True
-        #
-        # try:
-        #     cls.game(posible_movement, incompatibility, movements_allowed, forbidden_movement,
-        #              used_positions, end_position, horizontal, start, ap, next_movement, nom)
-        # except:
-        #     end_game = True
-        # print(roads)
 
     @classmethod
     def play(cls, labyrinth, walls_position):
