@@ -6,6 +6,7 @@ class Board:
         :param base_labyrinth: Base labyrinth representation.
         :param rod_length: Length of the rod representing the character's position (default: 3).
         """
+
         rod = [1] * rod_length
         base_labyrinth[0][:rod_length:] = rod
 

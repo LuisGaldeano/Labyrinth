@@ -1,6 +1,6 @@
-from src.labyrinth.models.board import Board
-from src.labyrinth.models.movemets import Movements
-from src.labyrinth.models.checks import Checks
+from src.backend.labyrinth.models.board import Board
+from src.backend.labyrinth.models.movemets import Movements
+from src.backend.labyrinth.models.checks import Checks
 
 board = Board()
 movements = Movements()

@@ -1,4 +1,4 @@
-from src.labyrinth.models.board import Board
+from src.backend.labyrinth import Board
 from src.main import labyrinth
 from unittest import TestCase
 

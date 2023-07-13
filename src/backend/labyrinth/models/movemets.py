@@ -1,4 +1,4 @@
-from src.labyrinth.models.checks import Checks
+from src.backend.labyrinth.models.checks import Checks
 
 
 class Movements:
@@ -17,17 +17,11 @@ class Movements:
         """
 
         next_movement = []
-        if horizontal:
-            for position in actual_position:
-                element = [position[0], position[1] + 1]
-                next_movement.append(element)
+        for position in actual_position:
+            element = [position[0], position[1] + 1]
+            next_movement.append(element)
 
-        if not horizontal:
-            for position in actual_position:
-                element = [position[0], position[1] + 1]
-                next_movement.append(element)
-
-        accepted_movement = Checks.check_if_valid_left_right(
+        accepted_movement = Checks.check_if_valid_right(
             next_movement=next_movement,
             walls_position=walls_position,
         )
@@ -48,19 +42,12 @@ class Movements:
             - horizontal (bool): Indicator of the movement direction (True for horizontal, False for vertical).
         """
 
-        movement = 'left'
         next_movement = []
-        if horizontal:
-            for position in actual_position:
-                element = [position[0], position[1] - 1]
-                next_movement.append(element)
+        for position in actual_position:
+            element = [position[0], position[1] - 1]
+            next_movement.append(element)
 
-        if not horizontal:
-            for position in actual_position:
-                element = [position[0], position[1] - 1]
-                next_movement.append(element)
-
-        accepted_movement = Checks.check_if_valid_left_right(
+        accepted_movement = Checks.check_if_valid_left(
             next_movement=next_movement,
             walls_position=walls_position,
         )
@@ -82,24 +69,13 @@ class Movements:
             - horizontal (bool): Indicator of the movement direction (True for horizontal, False for vertical).
         """
 
-        movement = 'down'
         next_movement = []
 
-        if horizontal:
-            # Create new movement
-            for element in actual_position:
-                x = [element[0] + 1, element[1]]
-                next_movement.append(x)
+        for element in actual_position:
+            x = [element[0] + 1, element[1]]
+            next_movement.append(x)
 
-        elif not horizontal:
-            for element in actual_position:
-                x = [element[0] + 1, element[1]]
-                next_movement.append(x)
-
-        accepted_movement = Checks.check_if_valid_up_down(
-            horizontal=horizontal,
-            movement=movement,
-            actual_position=actual_position,
+        accepted_movement = Checks.check_if_valid_down(
             next_movement=next_movement,
             walls_position=walls_position,
             base_labyrinth=base_labyrinth,
@@ -108,7 +84,7 @@ class Movements:
         return accepted_movement, next_movement, horizontal
 
     @classmethod
-    def up(cls, horizontal, walls_position, base_labyrinth, actual_position, nom):
+    def up(cls, horizontal, walls_position, actual_position):
         """
         Performs an upward movement of the rod.
 
@@ -122,33 +98,22 @@ class Movements:
             - next_movement (list): List of movements resulting from moving upwards.
             - horizontal (bool): Indicator of the movement direction (True for horizontal, False for vertical).
         """
-        movement = 'up'
+
         next_movement = []
 
-        if horizontal:
-            # Create new movement
-            for element in actual_position:
-                x = [element[0] - 1, element[1]]
-                next_movement.append(x)
+        for element in actual_position:
+            x = [element[0] - 1, element[1]]
+            next_movement.append(x)
 
-        elif not horizontal:
-            for element in actual_position:
-                x = [element[0] - 1, element[1]]
-                next_movement.append(x)
-
-        accepted_movement = Checks.check_if_valid_up_down(
-            horizontal=horizontal,
-            movement=movement,
-            actual_position=actual_position,
+        accepted_movement = Checks.check_if_valid_up(
             next_movement=next_movement,
             walls_position=walls_position,
-            base_labyrinth=base_labyrinth,
         )
 
         return accepted_movement, next_movement, horizontal
 
     @classmethod
-    def change_orientation(cls, horizontal, walls_position, base_labyrinth, actual_position, nom):
+    def change_orientation(cls, horizontal, walls_position, base_labyrinth, actual_position):
         """
         Changes the orientation of the rod.
 
@@ -162,8 +127,6 @@ class Movements:
             - next_movement (list): List of movements resulting from changing the orientation.
             - horizontal (bool): Indicator of the movement direction (True for horizontal, False for vertical).
         """
-
-        movement = 'orientation'
 
         # Create the movement
         next_movement = []
@@ -192,8 +155,6 @@ class Movements:
 
         accepted_movement = Checks.check_if_valid_orientation(
             horizontal=horizontal,
-            movement=movement,
-            actual_position=actual_position,
             next_movement=next_movement,
             walls_position=walls_position,
             base_labyrinth=base_labyrinth,
